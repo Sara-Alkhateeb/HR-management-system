@@ -1,0 +1,63 @@
+/* {
+    font-family: 'Righteous', cursive;
+}*/
+* {
+    font-family: 'Garamond', Serif;
+}
+
+
+body {
+    background-color: rgb(255, 252, 251);
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    width: 280px;
+    height: 100px;
+}
+.navc {
+   
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+
+    
+}
+nav {
+    width:100%;
+    font-size: large;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    color: black;
+}
+
+main {
+    height: 100vh;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0%;
+    width: 95%;
+}
+
+a{
+text-decoration: none;
+color: inherit;
+}
+
+ul {list-style-type: none;}
+
