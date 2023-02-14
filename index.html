@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>HR.System.Management</title>
     
-    <script type='text/javascript'>GA_googleFillSlot("Skyscraper");</script>
+   <!-- <script type='text/javascript'>GA_googleFillSlot("Skyscraper");</script> -->
    
 </head>
 
@@ -35,7 +35,55 @@
 
 
     </header>
-    
+    <main>
+        <h2> Registration </h2>
+        <form id="NewUser">
+            
+            <fieldset>
+                <legend>New User</legend>
+
+                <label for="Fullname"> Fullname:</label>
+                <input type="text" name="Fullname" id="Fullname" placeholder="Name">
+
+                <br/>
+                <br/>
+
+                <label for="imgUrl">Image</label>
+                <input type="text" name="imgUrl" id="imgUrl" placeholder="image path">
+
+                <br/>
+                <br/>
+
+                <label for="Department">Choose Department:</label>
+                <select name="Department" id="Department">
+                  <option value="Administration">Administration</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Development">Development</option>
+                  <option value="Finance">Finance</option>
+                </select>
+                <br><br>
+
+                <label for="Level">Choose level:</label>
+                <select name="Level" id="Levelt">
+                  <option value="Junior">Junior</option>
+                  <option value="Mid-Senior">Mid-Senior</option>
+                  <option value="Senior">Senior</option>
+                </select>
+
+                <br/>
+                <br/>
+
+                <input type="submit" value="submit">
+
+            </fieldset>
+
+        </form>
+        <br/>
+                <br/><br/>
+                <br/>
+        
+            <section id="Userinfo"></section>
+
 <br>
 <br>
 <br>
