@@ -13,6 +13,7 @@ body {
 section {
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
 }
 
 img {
@@ -47,8 +48,9 @@ nav {
 }
 
 main {
-    height: 200vh;
+    height: 500vh;
 }
+
 
 footer {
     display: flex;
@@ -73,6 +75,9 @@ ul {
     text-align: center;
     width: fit-content;
     background-color: rgb(206, 206, 200);
+    display: flex;
+    flex-direction: column;
+
 }
 
 
@@ -80,5 +85,34 @@ ul {
     width: 300px;
     height: 120px;
     background-color: rgb(166, 166, 166);
+    border-radius: 100%;
+    border: 5px solid #0a1544;
 }
 
+.user {
+    background-color: #8db3b3;
+    border-style: double;
+}
+
+#department-table{
+        width: 100%;
+        text-align: center;
+    
+}
+
+table {
+    width: 100%;
+    text-align: center;
+}
+
+td, th {
+    border: 2px solid rgb(9, 9, 72);
+}
+
+th {
+    padding: 10px 10px;
+}
+
+td {
+    padding: 10px;
+}
