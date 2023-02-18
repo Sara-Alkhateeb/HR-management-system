@@ -1,12 +1,15 @@
 'use strict';
 
+let employeesArr = [];
+
 function EmployeesData(EmployeeID, FullName, Department, Level, img) {
     this.EmployeeID = EmployeeID;
     this.FullName = FullName;
     this.Department = Department;
     this.Level = Level;
     this.img = img;
-    
+    this.salary=0;
+  
 }
 
 let DataSam1 = new EmployeesData(1001, "Lana Ali", "Finance", "Senior", "./EXTRA/lana.jpg");
@@ -53,7 +56,7 @@ EmployeesData.prototype.Salary = function () {
 EmployeesData.prototype.NetSalary = function () {
 
     var NetSalary = this.Salary() - (this.Salary() * .075);
-    return NetSalary;
+   this.salary= NetSalary;
 }
 //console.log(DataSam1.NetSalary());
 
@@ -87,8 +90,49 @@ function generateEmployeeId() {
 
 
 
-let NewUser = document.getElementById("NewUser");
-NewUser.addEventListener('submit', addNewUserHandler);
+function render() {
+
+    const container = document.getElementById('Userinfo');
+    container.innerHTML = '';
+
+    getemployees();
+
+    for (let i = 0; i < employeesArr.length; i++) {
+        const divEl = document.createElement('div');
+        container.appendChild(divEl);
+        divEl.classList.add("user")
+
+        const imgEl = document.createElement('img');
+        divEl.appendChild(imgEl);
+        imgEl.setAttribute('src', employeesArr[i].img);
+
+
+        const nameEl = document.createElement('h1');
+        divEl.appendChild(nameEl);
+        nameEl.textContent = `Name: ${employeesArr[i].FullName}`;
+
+        const IdEl = document.createElement('h2');
+        divEl.appendChild(IdEl);
+        IdEl.textContent = `ID: ${employeesArr[i].EmployeeID}`;
+
+        const DepartmentEl = document.createElement('h3');
+        divEl.appendChild(DepartmentEl);
+        DepartmentEl.textContent = `Department: ${employeesArr[i].Department}`;
+
+        const LevelEl = document.createElement('h3');
+        divEl.appendChild(LevelEl);
+        LevelEl.textContent = `Level: ${employeesArr[i].Level}`;
+
+        const SalaryEl = document.createElement('h5');
+        divEl.appendChild(SalaryEl);
+        SalaryEl.textContent = ` ${employeesArr[i].salary}`;
+
+        console.log(container)
+    }
+}
+
+let NewUserform = document.getElementById("NewUser");
+NewUserform.addEventListener('submit', addNewUserHandler);
 
 function addNewUserHandler(event) {
     event.preventDefault();
@@ -97,42 +141,27 @@ function addNewUserHandler(event) {
     let Department = event.target.Department.value;
     let Level = event.target.Level.value;
     let img = event.target.imgUrl.value;
-    let NewUser = new EmployeesData(EmployeeID, FullName, Department, Level, img);
-    NewUser.render();
-}
-
-EmployeesData.prototype.render = function () {
-
-    const container = document.getElementById('Userinfo');
-
-    const divEl = document.createElement('div');
-    container.appendChild(divEl);
-    divEl.classList.add("user")
-
-    const imgEl = document.createElement('img');
-    divEl.appendChild(imgEl);
-    imgEl.setAttribute('src', this.img);
     
+    let NewUser = new EmployeesData(EmployeeID, FullName, Department, Level, img);
+    
+    
+    NewUser.NetSalary();
+    employeesArr.push(NewUser);
 
-    const nameEl = document.createElement('h3');
-    divEl.appendChild(nameEl);
-    nameEl.textContent = `Name: ${this.FullName}`;
-
-    const IdEl = document.createElement('h3');
-    divEl.appendChild(IdEl);
-    IdEl.textContent = `ID: ${this.EmployeeID}`;
-
-    const DepartmentEl = document.createElement('h3');
-    divEl.appendChild(DepartmentEl);
-    DepartmentEl.textContent = `Department: ${this.Department}`;
-
-    const LevelEl = document.createElement('h3');
-    divEl.appendChild(LevelEl);
-    LevelEl.textContent = `Level: ${this.Level}`;
-
-    const SalaryEl = document.createElement('h3');
-    divEl.appendChild(SalaryEl);
-    SalaryEl.textContent = ` ${this.NetSalary()}`;
-
-    console.log(container)
+    let jsonArr = JSON.stringify(employeesArr);
+    localStorage.setItem("allemployees", jsonArr);
+   console.log(NewUser);
+   render();
 }
+
+function getemployees() {
+
+    let jsonArr = localStorage.getItem("allemployees");
+    employeesArr = JSON.parse(jsonArr);
+    
+    if (employeesArr == null) {
+        employeesArr = [];
+    }
+}
+
+render();
